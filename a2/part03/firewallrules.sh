@@ -3,7 +3,7 @@ iptables -A LOG_AND_DROP -j LOG --log-prefix "Source host denied "
 iptables -A LOG_AND_DROP -j DROP
 
 iptables -A INPUT -p tcp --dport 22 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 22 -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 22 -j ACCEPT
 iptables -A INPUT -p tcp --dport 2221 -j ACCEPT
 iptables -A OUTPUT -p tcp --sport 2221 -j ACCEPT
 iptables -A INPUT -p tcp --dport 2222 -j ACCEPT
@@ -84,7 +84,3 @@ iptables -A FORWARD -p tcp --sport 8080 -d 10.229.100.13 -j LOG_AND_DROP
 iptables -A FORWARD -p tcp --sport 8080 -j ACCEPT
 
 iptables -t nat -A PREROUTING -p tcp --sport 8080 -j DNAT --to 255.255.255.0
-
-iptables -P INPUT DROP
-iptables -P FORWARD DROP
-iptables -P OUTPUT DROP
