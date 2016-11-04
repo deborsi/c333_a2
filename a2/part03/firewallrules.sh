@@ -4,10 +4,9 @@ iptables -A LOG_AND_DROP -j DROP
 
 iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 iptables -A OUTPUT -p tcp --sport 22 -j ACCEPT
-iptables -A INPUT -p tcp --dport 2221 -j ACCEPT
-iptables -A OUTPUT -p tcp --sport 2221 -j ACCEPT
-iptables -A INPUT -p tcp --dport 2222 -j ACCEPT
-iptables -A OUTPUT -p tcp --sport 2222 -j ACCEPT
+iptables -A FORWARD -p tcp -s 10.229.12.2:22 -j ACCEPT
+
+iptables -t nat -A PREROUTING -p tcp --dport 22 -j DNAT --to 10.229.12.2:22
 
 iptables -A FORWARD -p tcp --dport 80 -s 10.229.97.0/24 -j LOG_AND_DROP
 iptables -A FORWARD -p tcp --dport 80 -s 10.229.100.97 -j LOG_AND_DROP
