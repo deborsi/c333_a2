@@ -41,17 +41,17 @@ iptables -A OUTPUT -p tcp --sport 20 -d 10.229.13.0/24 -j LOG_AND_DROP
 iptables -A OUTPUT -p tcp --sport 20 -d 10.229.100.13 -j LOG_AND_DROP
 iptables -A OUTPUT -p tcp --sport 20 -d 10.229.0.0/16 -j ACCEPT
 
-iptables -A INPUT -p tcp --sport 1024: --dport 1024: -s 10.229.96.0/24 -j LOG_AND_DROP
-iptables -A INPUT -p tcp --sport 1024: --dport 1024: -s 10.229.100.96 -j LOG_AND_DROP
-iptables -A INPUT -p tcp --sport 1024: --dport 1024: -s 10.229.13.0/24 -j LOG_AND_DROP
-iptables -A INPUT -p tcp --sport 1024: --dport 1024: -s 10.229.100.13 -j LOG_AND_DROP
-iptables -A INPUT -p tcp --sport 1024: --dport 1024: -s 10.229.0.0/16 -j ACCEPT
+iptables -A INPUT -p tcp --sport 1024:2220 2223:8079 8081: --dport 1024:2220 2223:8079 8081: -s 10.229.96.0/24 -j LOG_AND_DROP
+iptables -A INPUT -p tcp --sport 1024:2220 2223:8079 8081: --dport 1024:2220 2223:8079 8081: -s 10.229.100.96 -j LOG_AND_DROP
+iptables -A INPUT -p tcp --sport 1024:2220 2223:8079 8081: --dport 1024:2220 2223:8079 8081: -s 10.229.13.0/24 -j LOG_AND_DROP
+iptables -A INPUT -p tcp --sport 1024:2220 2223:8079 8081: --dport 1024:2220 2223:8079 8081: -s 10.229.100.13 -j LOG_AND_DROP
+iptables -A INPUT -p tcp --sport 1024:2220 2223:8079 8081: --dport 1024:2220 2223:8079 8081: -s 10.229.0.0/16 -j ACCEPT
 
-iptables -A OUTPUT -p tcp --sport 1024: --dport 1024: -d 10.229.96.0/24 -j LOG_AND_DROP
-iptables -A OUTPUT -p tcp --sport 1024: --dport 1024: -d 10.229.100.96 -j LOG_AND_DROP
-iptables -A OUTPUT -p tcp --sport 1024: --dport 1024: -d 10.229.13.0/24 -j LOG_AND_DROP
-iptables -A OUTPUT -p tcp --sport 1024: --dport 1024: -d 10.229.100.13 -j LOG_AND_DROP
-iptables -A OUTPUT -p tcp --sport 1024: --dport 1024: -d 10.229.0.0/16 -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 1024:2220 2223:8079 8081: --dport 1024:2220 2223:8079 8081: -d 10.229.96.0/24 -j LOG_AND_DROP
+iptables -A OUTPUT -p tcp --sport 1024:2220 2223:8079 8081: --dport 1024:2220 2223:8079 8081: -d 10.229.100.96 -j LOG_AND_DROP
+iptables -A OUTPUT -p tcp --sport 1024:2220 2223:8079 8081: --dport 1024:2220 2223:8079 8081: -d 10.229.13.0/24 -j LOG_AND_DROP
+iptables -A OUTPUT -p tcp --sport 1024:2220 2223:8079 8081: --dport 1024:2220 2223:8079 8081: -d 10.229.100.13 -j LOG_AND_DROP
+iptables -A OUTPUT -p tcp --sport 1024:2220 2223:8079 8081: --dport 1024:2220 2223:8079 8081: -d 10.229.0.0/16 -j ACCEPT
 
 iptables -A INPUT -p tcp --dport 69 -s 10.229.96.0/24 -j LOG_AND_DROP
 iptables -A INPUT -p tcp --dport 69 -s 10.229.100.96 -j LOG_AND_DROP
@@ -86,3 +86,5 @@ iptables -A FORWARD -p tcp --sport 8080 -d 10.229.0.0/16 -j ACCEPT
 iptables -t nat -A PREROUTING -p tcp --sport 8080 -j DNAT --to 10.229.0.0/16
 
 iptables -P INPUT DROP
+iptables -P FORWARD DROP
+iptables -P OUTPUT DROP
