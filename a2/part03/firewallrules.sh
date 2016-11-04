@@ -53,17 +53,17 @@ iptables -A OUTPUT -p tcp --sport 1024:2220 2223:8079 8081: --dport 1024:2220 22
 iptables -A OUTPUT -p tcp --sport 1024:2220 2223:8079 8081: --dport 1024:2220 2223:8079 8081: -d 10.229.100.13 -j LOG_AND_DROP
 iptables -A OUTPUT -p tcp --sport 1024:2220 2223:8079 8081: --dport 1024:2220 2223:8079 8081: -d 10.229.0.0/16 -j ACCEPT
 
-iptables -A INPUT -p tcp --dport 69 -s 10.229.96.0/24 -j LOG_AND_DROP
-iptables -A INPUT -p tcp --dport 69 -s 10.229.100.96 -j LOG_AND_DROP
-iptables -A INPUT -p tcp --dport 69 -s 10.229.1.0/24 -j LOG_AND_DROP
-iptables -A INPUT -p tcp --dport 69 -s 10.229.100.1 -j LOG_AND_DROP
-iptables -A INPUT -p tcp --dport 69 -s 10.229.0.0/16 -j ACCEPT
+iptables -A INPUT -p udp --dport 69 -s 10.229.96.0/24 -j LOG_AND_DROP
+iptables -A INPUT -p udp --dport 69 -s 10.229.100.96 -j LOG_AND_DROP
+iptables -A INPUT -p udp --dport 69 -s 10.229.1.0/24 -j LOG_AND_DROP
+iptables -A INPUT -p udp --dport 69 -s 10.229.100.1 -j LOG_AND_DROP
+iptables -A INPUT -p udp --dport 69 -s 10.229.0.0/16 -j ACCEPT
 
-iptables -A OUTPUT -p tcp --sport 69 -d 10.229.96.0/24 -j LOG_AND_DROP
-iptables -A OUTPUT -p tcp --sport 69 -d 10.229.100.96 -j LOG_AND_DROP
-iptables -A OUTPUT -p tcp --sport 69 -d 10.229.1.0/24 -j LOG_AND_DROP
-iptables -A OUTPUT -p tcp --sport 69 -d 10.229.100.1 -j LOG_AND_DROP
-iptables -A OUTPUT -p tcp --sport 69 -d 10.229.0.0/16 -j ACCEPT
+iptables -A OUTPUT -p udp --sport 69 -d 10.229.96.0/24 -j LOG_AND_DROP
+iptables -A OUTPUT -p udp --sport 69 -d 10.229.100.96 -j LOG_AND_DROP
+iptables -A OUTPUT -p udp --sport 69 -d 10.229.1.0/24 -j LOG_AND_DROP
+iptables -A OUTPUT -p udp --sport 69 -d 10.229.100.1 -j LOG_AND_DROP
+iptables -A OUTPUT -p udp --sport 69 -d 10.229.0.0/16 -j ACCEPT
 
 iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 iptables -A OUTPUT -p tcp --dport 22 -j ACCEPT
