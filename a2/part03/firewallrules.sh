@@ -83,8 +83,6 @@ iptables -A FORWARD -p tcp --sport 8080 -d 10.229.13.0/24 -j LOG_AND_DROP
 iptables -A FORWARD -p tcp --sport 8080 -d 10.229.100.13 -j LOG_AND_DROP
 iptables -A FORWARD -p tcp --sport 8080 -j ACCEPT
 
-iptables -t nat -A PREROUTING -p tcp --sport 8080 -j DNAT
-
 iptables -P INPUT DROP
 iptables -P FORWARD DROP
 iptables -P OUTPUT DROP
